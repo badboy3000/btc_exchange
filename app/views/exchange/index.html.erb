@@ -4,8 +4,8 @@
 	<%= form_tag("/calculate", method: "put") do %>
 		<div>
 			<select name='transaction_type'>
-			  <option value="bid">Buy</option>
-			  <option value="ask">Sell</option>
+			  <option value="ask">Buy</option>
+			  <option value="bid">Sell</option>
 			</select>
 			<select name='transaction_currency'>
 				<option value="btc">BTC</option>
@@ -13,7 +13,7 @@
 			</select>
 		</div>
 		<div>
-			Quantity: <input type="number" name="quantity" >
+			Quantity: <input name="quantity" >
 		</div>
 		<%= submit_tag("Submit") %>
 	<% end %>
