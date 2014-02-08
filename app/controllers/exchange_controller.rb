@@ -18,19 +18,36 @@ class ExchangeController < ApplicationController
 		end
 		while (quantity > given)
 			i = i + 1
-			#puts (book[i][1].to_f)
-			puts quantity
-			puts given
-			puts book[i][1].to_f
-			puts (quantity - given) > book[i][1].to_f
+			if (i >= book.length)
+				@price = nil
+				break
+			end
+			
 			if ((quantity - given) > book[i][1].to_f)
 				given += book[i][1].to_f
-				@price = @price + (book[i][0].to_f * (book[i][1].to_f / quantity))
+				if (params['transaction_currency'] == 'btc')
+					@price = @price + (book[i][0].to_f * (book[i][1].to_f / quantity))
+				else
+					@price = @price + ((1 / book[i][0].to_f) * (book[i][1].to_f / quantity))
+				end
 			else
-				@price = @price + (book[i][0].to_f * ((quantity - given) / quantity))
+				if (params['transaction_currency'] == 'btc')
+					@price = @price + (book[i][0].to_f * ((quantity - given) / quantity))
+				else
+					@price = @price + (( 1 / book[i][0].to_f) * ((quantity - given) / quantity))
+				end	
 				given = quantity
 			end
 		end
+
+		if (params['transaction_currency'] == 'btc') 
+			@format = 0
+		else 
+			@format = 1
+		end
+
+		@commission =
+		@total = @price + @commission
 
 		render 'show'
 	end

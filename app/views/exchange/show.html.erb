@@ -1,0 +1,11 @@
+<div>
+	<% if @price %>
+		<% if (@format == 0) %>
+			Your Quote: $<%= number_with_precision(@price, :precision => 2) %>
+		<% else %>
+			Your Quote: <%= number_with_precision(@price, :precision => 8) %> BTC
+		<% end %> 
+	<% else %>
+	Quantity was too large 
+	<% end %>
+</div>
