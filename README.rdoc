@@ -1,28 +1,17 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Sabar Dasgupta
+Coinbase Code Challenge
+2.8.2014
 
-Things you may want to cover:
+I created a web app using the Ruby on Rails framework and hosted my site using Heroku at http://sabardcoinbase.herokuapp.com. I am running ruby 2.1.0 and rails 4.0.2.
 
-* Ruby version
+To test this converter completely, there are 4 main test cases——getting a quote to sell BTC in USD, sell USD in BTC, buy BTC in USD, and buy USD in BTC. Within each of these cases, a normal input must be tested as well as inputs that exceed the total number of quantities in the order book. 
 
-* System dependencies
+My approach was fairly simple. I went through the order book, adding quantities and calculating the price so far until this hit the quantity input by the user. This takes linear time in the size of the order book and does not really need to be improved. It could be optimized slightly by precomputing a new order book for USD to BTC conversions, but this is not necessary.
 
-* Configuration
+If I had more time I would add a few more features. I would put the calculation code into the JavaScripts so that everything could be done without any page loads or redirects. I would also clean up the views, making them more comprehensive and ‘prettier’. Front-end is not my area of expertise, so I didn’t really worry about styling or formatting for this challenge. I would also clean up the code, setting static variables, condensing loops, and precomputing values instead of using if-statements to convert USD to BTC values while in the loop. 
 
-* Database creation
+Unfortunately, I had some problems with my postgresql installation in the beginning of the challenge. Everything was working fine when I tested it yesterday, but I had to revert to a sqlite database locally and ended up wasting a decent amount of time. I probably would have written a testing suite if I had not run into this issue.
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+Another cool feature might be one that precomputes a number of popular quantities and graphs the rates. This would make it easier for users to visualize their transactions and allow them to see the rates for buying/selling more clearly. Furthermore, I could set up a user account system, to allow users to save and track their quotes.
