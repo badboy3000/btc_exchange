@@ -1,1 +1,19 @@
-Hello
+
+<body>
+	<h1>BTC Exchange</h1>
+	<div>
+	<select>
+	  <option value="buy">Buy</option>
+	  <option value="sell">Sell</option>
+	</select>
+	<select>
+		<option value="btc">BTC</option>
+	  <option value="usd">USD</option>
+	</select>
+	</div>
+	<div>
+		<input type="number">
+	</div>
+
+	<div> <%= @order_book %> </div>
+</body>
