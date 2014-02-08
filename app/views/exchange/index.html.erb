@@ -1,19 +1,22 @@
 
 <body>
 	<h1>BTC Exchange</h1>
-	<div>
-	<select>
-	  <option value="buy">Buy</option>
-	  <option value="sell">Sell</option>
-	</select>
-	<select>
-		<option value="btc">BTC</option>
-	  <option value="usd">USD</option>
-	</select>
-	</div>
-	<div>
-		<input type="number">
-	</div>
+	<%= form_tag("/calculate", method: "put") do %>
+		<div>
+			<select name='transaction_type'>
+			  <option value="bid">Buy</option>
+			  <option value="ask">Sell</option>
+			</select>
+			<select name='transaction_currency'>
+				<option value="btc">BTC</option>
+			  <option value="usd">USD</option>
+			</select>
+		</div>
+		<div>
+			Quantity: <input type="number" name="quantity" >
+		</div>
+		<%= submit_tag("Submit") %>
+	<% end %>
 
 	<div> <%= @order_book %> </div>
 </body>
