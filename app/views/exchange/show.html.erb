@@ -1,10 +1,12 @@
 <div>
 	<% if @price %>
 		<% if (@format == 0) %>
-			Your Quote: $<%= number_with_precision(@price, :precision => 2) %>
+			<p>Your Quote: $<%= number_with_precision(@total, :precision => 2) %></p>
+			<p> $<%= number_with_precision(@price, :precision => 2) %> with a $<%= number_with_precision(@commission, :precision => 2) %> commission. </p>
 		<% else %>
-			Your Quote: <%= number_with_precision(@price, :precision => 8) %> BTC
-		<% end %> 
+			</p>Your Quote: <%= number_with_precision(@total, :precision => 8) %> BTC</p>
+			<p> <%= number_with_precision(@price, :precision => 8) %> BTC with a <%= number_with_precision(@commission, :precision => 8) %> BTC commission. </p>
+		<% end %>
 	<% else %>
 	Quantity was too large 
 	<% end %>

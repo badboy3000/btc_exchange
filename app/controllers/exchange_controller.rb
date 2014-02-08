@@ -46,8 +46,14 @@ class ExchangeController < ApplicationController
 			@format = 1
 		end
 
-		@commission =
-		@total = @price + @commission
+		if @price 
+		@commission = @price * 0.01 # I would set this as a static variable if I had time
+		if (params['transaction_type'] == 'bid') 	
+			@total = @price - @commission
+		else
+			@total = @price + @commission
+		end
+		end
 
 		render 'show'
 	end
